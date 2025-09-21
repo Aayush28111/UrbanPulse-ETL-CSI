@@ -1,0 +1,53 @@
+CREATE DATABASE IF NOT EXISTS urban_pulse;
+USE urban_pulse;
+
+CREATE TABLE IF NOT EXISTS weather_data (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  city VARCHAR(100),
+  temperature FLOAT,
+  humidity FLOAT,
+  weather_desc VARCHAR(255),
+  ts DATETIME,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS air_quality_data (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  city VARCHAR(100),
+  aqi INT,
+  pm25 FLOAT,
+  pm10 FLOAT,
+  ts DATETIME,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS traffic_data (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  city VARCHAR(100),
+  area VARCHAR(255),
+  congestion_score FLOAT,
+  ts DATETIME,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tweets_data (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  tweet_id VARCHAR(100),
+  city VARCHAR(100),
+  tweet_text TEXT,
+  sentiment FLOAT,
+  ts DATETIME,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS csi_table (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  city VARCHAR(100),
+  ts DATETIME,
+  csi_score FLOAT,
+  traffic_score FLOAT,
+  aqi_score FLOAT,
+  weather_score FLOAT,
+  sentiment_score FLOAT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
